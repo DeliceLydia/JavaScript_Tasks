@@ -28,3 +28,37 @@ console.log(full_price)
 // 5. Filter and show the product that will be start with letter b at first postion
 const filterProduct = items.filter((product) => product.name.charAt(0).toLowerCase() === 'b');
 console.log(filterProduct)
+
+// create task manager where user can add, remove, and mark task as completed
+// a. add task to the tasklist
+let array = [];
+const add = (item) => {return array.push({nameTask:item, complete:false})}
+add('cleaning')
+add('washing')
+add('cooking')
+add('reading')
+
+// b. remove task from the tasklist
+const remove = (index) => {return array.splice(index, 1)}
+remove(1)
+
+// c. mark task as completed
+const markcompleted=(index)=>{array[index].complete = true}
+markcompleted(2)
+
+// d. sort task alphabetical
+const sortArray = () => {return array.sort((a,b) => a.nameTask.localeCompare(b.nameTask));}
+sortArray()
+
+// e. display the number of incomplete task
+const incompleteTask = () => {
+  const result = array.filter((item) => item.complete ===  false)
+  return result.length
+}
+incompleteTask()
+
+// display tasks
+const displayTasks = () => {return array.map((item)=> item)}
+displayTasks();
+
+console.log(array)
