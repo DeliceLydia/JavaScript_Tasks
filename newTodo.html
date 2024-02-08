@@ -13,25 +13,40 @@
     <main class="w-full">
       <header class="bg-[#181451] flex justify-between pl-6 pr-6">
         <ul>
-          <li><a href="./index.html"><img src="../images/logo.png" alt="logo" class="w-24" /></a></li>
+          <li>
+            <a href="./index.html"
+              ><img src="../images/logo.png" alt="logo" class="w-24"
+            /></a>
+          </li>
         </ul>
         <div
           class="flex items-center bg-[#FF6A16] pl-7 pr-8 pt-3 pb-3 h-1/2 mt-6 rounded-md"
         >
           <span class=""><i class="fa fa-plus"></i></span>
-          <button class="text-white pl-4"><a href="./newTodo.html">Add todo</a></button>
+          <button class="text-white pl-4">
+            <a href="./newTodo.html">Add todo</a>
+          </button>
         </div>
       </header>
       <div class="w-full">
-        <form action="" class="ml-20 mr-20 mt-8">
-          <h4  class="text-base font-medium">Name of Pizza</h4>
-          <input type="text" class="mt-2 bg-[#efefef] rounded-md w-full pt-4 pb-4">
-          <button class="text-white pl-16 pr-16 pt-3 pb-3 bg-[#FF6A16] block ml-auto mr-0 rounded-md mt-3">Add todo</button>
+        <ul id="list-container">
+        </ul>
+        <form name="my-form" class="ml-20 mr-20 mt-8">
+          <h4 class="text-base font-medium">Name of Pizza</h4>
+          <input
+            type="text"
+            class="mt-2 bg-[#efefef] rounded-md w-full pt-4 pb-4"
+            id="input-box"
+          />
+          <button
+            class="text-white pl-16 pr-16 pt-3 pb-3 bg-[#FF6A16] block ml-auto mr-0 rounded-md mt-3"
+            id="todo" onclick="addTask()">
+            Add todo
+          </button>
         </form>
       </div>
-      
-        </div>
-      </div>
+      <div id="demo"></div>
     </main>
   </body>
+  <script src="/todo.js"></script>
 </html>
