@@ -7,41 +7,29 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
     <main class="w-full">
       <header class="bg-[#181451] flex justify-between pl-6 pr-6">
-        <ul>
-          <li>
+        <div>
+          <div>
             <a href="./index.html"
               ><img src="../images/logo.png" alt="logo" class="w-24"
             /></a>
-          </li>
-        </ul>
+          </div>
+        </div>
         <div
           class="flex items-center bg-[#FF6A16] pl-7 pr-8 pt-3 pb-3 h-1/2 mt-6 rounded-md"
         >
           <span class=""><i class="fa fa-plus"></i></span>
           <button class="text-white pl-4">
-            <a href="./newTodo.html">Add todo</a>
+            <a href="./html/newTodo.html">Add todo</a>
           </button>
         </div>
       </header>
-      <div class="">
-        <div
-          class="flex justify-between ml-16 mr-16 p-5 mt-10 bg-[#efefef] rounded-md"
-        >
-          <div>
-            <input type="checkbox" id="chicken" name="chicken" />
-            <span class="ml-4 text-base font-medium">Chicken pizza</span>
-          </div>
-          <div>
-            <i class="fa fa-check text-green-500" aria-hidden="true"></i>
-            <i class="fa fa-trash ml-4 text-red-700" aria-hidden="true"></i>
-          </div>
-        </div>
-      </div>
     </main>
   </body>
-  <script src="/todo.js"></script>
+  <script src="./todo.js"></script>
 </html>

@@ -1,0 +1,52 @@
+#list-container  {
+  margin-top: 4rem;
+
+}
+
+ul li {
+  list-style: none;
+  font-size: 17px;
+  padding: 12px 8px 12px 50px;
+  user-select: none;
+  cursor: pointer;
+  position: relative;
+}
+
+ul li::before {
+  content: '';
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background-image: url(../images/radio.png);
+  background-size: cover;
+  background-position: center;
+  top: 16px;
+  left: 8px;
+}
+
+li {
+  background-color: #efefef;
+  margin-left: 36px;
+  margin-right: 36px;
+  margin-bottom: 15px;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+ul .checked{
+  color: #555;;
+}
+
+ul .checked::before{
+  background-image: url(../images/check.png);
+}
+
+button{
+  background-color: #f44336;
+  color: #fff;
+  padding: 10px 48px;
+  border: none;
+  border-radius: 8px;
+}
