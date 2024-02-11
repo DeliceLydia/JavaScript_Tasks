@@ -1,21 +1,20 @@
-import {createInterface} from 'readline';
-import {stdin, stdout} from 'process';
+import {createInterface} from 'readline';;
 
 const rl = createInterface({
-  input: stdin,
-  output: stdout
+  input: process.stdin,
+  output: process.stdout
 });
 
 const quizData = [
   {
     question: "What is the capital of France?",
     options: ["Paris", "London", "Berlin", "Madrid"],
-    answer: "Paris",
+    correctAnswer: "Paris",
   },
   {
     question: "Which planet is known as the Red Planet?",
     options: ["Earth", "Mars", "Jupiter", "Venus"],
-    answer: "Mars",
+    correctAnswer: "Mars",
   },
   {
     question: "Who wrote 'Romeo and Juliet'?",
@@ -25,54 +24,48 @@ const quizData = [
       "Jane Austen",
       "Mark Twain",
     ],
-    answer: "William Shakespeare",
+    correctAnswer: "William Shakespeare",
   },
 ];
 
-const displayQuestionOption = (question) => {
-  console.log(question.question);
-  question.options.forEach((item, index) =>{
-    console.log(`${index + 1}. ${item}`);
-  })
-};
+let userAnswers = [];
+let currentQuestion = 0;
 
-const getAnswer = (question, answer) => {
-  const answerGiven = quizData[question];
-  let checkResponse = answerGiven.answer;
-  if(answer === checkResponse) {
-    console.log(answerGiven, checkResponse);
-    console.log('correct');
-  }else {
-    console.log('incorrect');
+function displayQuestion() {
+  const currentQuizData = quizData[currentQuestion];
+  console.log(`${currentQuizData.question}\nOptions: ${currentQuizData.options.join(', ')}`);
+}
+
+
+function askQuestion() {
+  rl.question("Your answer: ", (answer) => {
+    userAnswers.push(answer.toLowerCase()); // Convert to lowercase for case-insensitive comparison
+    currentQuestion++;
+
+    if (currentQuestion < quizData.length) {
+      displayQuestion();
+      askQuestion();
+    } else {
+      calculateScore();
+      rl.close();
+    }
+  });
+}
+
+function calculateScore() {
+  let score = 0;
+
+  for (let i = 0; i < quizData.length; i++) {
+    if (userAnswers[i] === quizData[i].correctAnswer.toLowerCase()) {
+      score++;
+    }
   }
-};
 
-const getQuestion = () => {
-  for(let i = 0; i < quizData.length; i++){
-    console.log(quizData[i].question);
-    displayQuestionOption(quizData[i]);
-    rl.question(``, (answer => {
-      getAnswer(i, answer);
-      getQuestion();
-    }));
-  }
-};
+  console.log(`Your score is: ${score} out of ${quizData.length}`);
+}
 
-let i = 0;
+console.log("Welcome to the Quiz App!");
+displayQuestion();
+askQuestion();
 
-const generateQuestion = () => {
-  if (i < quizData.length) {
-    rl.question(
-      displayQuestionOption(quizData[i]),
-      (answer) => {
-        console.log(answer);
-        i++;
-        generateQuestion();  // Call generateQuestion recursively
-      }
-    );
-  } else {
-    console.log("Quiz Completed!");
-    rl.close();
-  }
-};
-generateQuestion();
+
